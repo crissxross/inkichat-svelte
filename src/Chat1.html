@@ -1,0 +1,195 @@
+<div class="container-grid">
+
+	{{#each chatTurns as turn}}
+	{{#if turn.id < 10}}
+  <div class='{{ turn.actor == 'girl' ? "self-grid" : "other-grid"}}'>
+    <div class="icon"><i class="material-icons">
+        {{ turn.actor == 'girl' ? 'face' : 'account_circle'}}
+    </i></div>
+    <div class="msg">{{turn.text}}</div>
+	</div>
+	{{/if}}
+	{{/each}}
+	<p>What's current? {{currentId}} </p>
+
+</div>
+
+<style>
+  .container-grid {
+		display: grid;
+		grid-template-columns: 1fr 2fr 1fr;
+		grid-row-gap: 10px;
+		padding: 20px 5px 10px;
+	}
+
+	.other-grid {
+		grid-column: 1 / span 2;
+		display: grid;
+		grid-template-columns: 36px 1fr;
+		align-items: end;
+	}
+
+	.self-grid {
+		grid-column: 2 / span 2;
+		display: grid;
+		grid-template-columns: 1fr 36px;
+		align-items: end;
+	}
+
+	.other-grid > .msg {
+		background-color: var(--other-color);
+		grid-column: 2;
+		justify-self: start;
+	}
+
+	.other-grid .icon {
+		grid-column: 1;
+		color: var(--other-color);
+	}
+
+	.self-grid .msg {
+		background-color: var(--self-color);
+		grid-column: 1;
+		justify-self: end;
+		order: 1;
+	}
+
+	.self-grid .icon {
+		grid-column: 2;
+		order: 2;
+		color: var(--self-color);
+	}
+
+	.msg, .q-option {
+		padding: 10px;
+		border-radius: 10px;
+	}
+
+	.icon {
+		text-align: center;
+	/*   border: 1px solid #666; */
+	}
+
+	.material-icons {
+		font-size: 30px;
+	}
+
+	.quiz-grid {
+		grid-column: 1 / span 3;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-column-gap: 10px;
+		background-color: #fff;
+		padding: 10px;
+		margin: 0 5px;
+		border-radius: 10px;
+		box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.4);
+	/*   box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.3); */
+	}
+
+	.other .q-option {
+		background-color: var(--other-color);
+	}
+
+	.self .q-option {
+		background-color: var(--self-color);
+	}
+
+	.btn {
+		cursor: pointer;
+		box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.3);
+	}
+
+	a:hover {
+		box-shadow: inset 0 0 1.5em rgba(255, 255, 255, 0.5), 0 0 1em rgba(0, 0, 0, 0.5);
+	}
+	p {
+		color: black;
+		grid-column: 1 / span 3;
+	}
+</style>
+
+<script>
+
+  export default {
+    data () {
+			return {
+				count: 0,
+				"dialogTurns": [
+				{
+					"id": 1,
+					"actor": "friend",
+					"actionType": "SAYS",
+					"text": "r u going to sam’s party?" 
+				},
+				{
+					"id": 2,
+					"actor": "girl",
+					"actionType": "SAYS",
+					"text": "no I’m grounded" 
+				},
+				{
+					"id": 3,
+					"actor": "friend",
+					"actionType": "SAYS",
+					"text": "grounded? oh girl, that sucks! Why? What did you do?" 
+				},
+				{
+					"id": 4,
+					"actor": "girl",
+					"actionType": "OPTIONS",
+					"text":"I sneaked out wearing Mum’s giant gold hoops and lost one",
+				},
+				{
+					"id": 5,
+					"actor": "friend",
+					"actionType": "REPLIES",
+					"text":"omg"
+				},
+				{
+					"id": 6,
+					"actor": "girl",
+					"actionType": "SAYS",
+					"text": "Yeah. So mean, they took away my mobile, restricted internet to exam revision sites. Boring!" 
+				},
+				{
+					"id": 7,
+					"actor": "friend",
+					"actionType": "SAYS",
+					"text": "how you chatting to me then?" 
+				},
+				{
+					"id": 8,
+					"actor": "girl",
+					"actionType": "SAYS",
+					"text": "I have ways & means ha ha ha" 
+				},
+				{
+					"id": 9,
+					"actor": "friend",
+					"actionType": "SAYS",
+					"text": "like what?" 
+				},
+				{
+					"id": 10,
+					"actor": "girl",
+					"actionType": "SAYS",
+					"text": "I looked up how to hack around parental controls. Connection bit dodgy but ok" 
+				},
+				{
+					"id": 11,
+					"actor": "friend",
+					"actionType": "SAYS",
+					"text": "Wow! You’re like a real hacker. You’ll be in Anonymous next" 
+				}
+			]
+			}
+		},
+		
+		computed: {
+			currentId: count => count +1,
+			chatTurns: dialogTurns => dialogTurns
+		}
+    
+  }
+</script>

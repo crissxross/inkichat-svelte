@@ -1,0 +1,7 @@
+{
+  //------- Editor configuration -------
+
+    // Controls if the minimap is shown
+    "editor.minimap.enabled": true
+    
+}

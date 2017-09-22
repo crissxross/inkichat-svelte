@@ -1,0 +1,68 @@
+<div class="wrapper">
+	<h4>{{title}}</h4>
+	<div class="screen">
+
+		<Chat1 />
+
+		<!-- an ALTERNATIVE WAY of displaying turns -->
+		<!-- <div class="container-grid"> -->
+
+			<!-- {{#each dialogTurns as turn}}
+			{{#if turn.actor == 'girl'}}
+			<div class="self-grid">
+				<div class="icon"><i class="material-icons">face</i></div>
+				<div class="msg">{{turn.text}}</div>
+			</div>
+			{{else}}
+			<div class="other-grid">
+					<div class="icon"><i class="material-icons">account_circle</i></div>
+					<div class="msg">{{turn.text}}</div>
+				</div>
+			{{/if}}
+			{{/each}} -->
+
+		<!-- </div> -->
+
+	</div>
+</div>
+
+<style>
+	:root {
+		--self-color: #0077e6;
+		--other-color: #9e0012;
+	}
+
+	.wrapper {
+		display: grid;
+		grid-template-columns: 200px minmax(320px, 414px) 200px;
+		grid-template-rows: 20px minmax(533px, 736px) 50px;
+		height: 100vh;
+	}
+
+	.screen {
+		grid-column: 2;
+		grid-row: 2;
+		min-height: 533px;
+		max-height: 736px;
+		background-color: #eee;
+		border-radius: 10px;
+	}
+
+	h4 {
+		font-weight: 300;
+		color: #808080;
+		padding-left: 10px;
+	}
+</style>
+
+<!-- IMPORT COMPONENT/S -->
+<script>
+	import Chat1 from './Chat1.html';
+
+	export default {
+		components: {
+			Chat1
+		}
+	}
+
+</script>
