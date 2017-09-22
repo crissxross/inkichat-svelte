@@ -1,4 +1,8 @@
 {
+
+  // Controls auto save of dirty files. Accepted values:  'off', 'afterDelay', 'onFocusChange' (editor loses focus), 'onWindowChange' (window loses focus). If set to 'afterDelay', you can configure the delay in 'files.autoSaveDelay'.
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
   //------- Editor configuration -------
 
     // Controls if the minimap is shown
